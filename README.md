@@ -1,146 +1,85 @@
 # Autonomous Aircraft Tug Prototype using Kobuki
 
-This project explored a small-scale autonomous robotic tug concept for parking
-and positioning aircraft.
+This project explored a small-scale autonomous robotic tug concept for aircraft
+parking and positioning using a TurtleBot2 / Kobuki mobile platform.
 
-The experimental platform was based on a TurtleBot2 / Kobuki mobile base. Tests
-were conducted in an indoor environment, where a small-scale aircraft setup was
-attached to the mobile robot to represent the intended aircraft-parking use case.
+The work was carried out in 2020 as part of my role as an **Associate AI Engineer
+at NextBridge**, where I contributed to an autonomous robotics R&D effort involving
+ROS, mobile robot integration, mapping, navigation, and experimentation toward an
+aircraft-tug use case.
 
-The prototype was used to investigate autonomous navigation, mapping,
-localization, and positioning before moving toward a custom-built robotic
-platform.
+Experiments were conducted indoors using a small-scale aircraft setup attached to
+the mobile robot to represent the intended parking application.
 
-> **Note:** This repository contains recovered material from an experimental
-> R&D project developed in 2020. Some of the original development files are no
-> longer available, so the documentation distinguishes between implemented
-> experiments and the intended final aircraft-parking application.
+> **Note:** This repository contains recovered material from the original project.
+> Some development files are no longer available, so the documentation distinguishes
+> between recovered/verified experiments and the intended final application.
 
 ## Project Goal
 
-The main objective was to investigate a small-scale autonomous system capable of:
+The prototype was used to investigate:
 
-- Mapping its environment
-- Localizing the mobile platform
-- Navigating toward defined target positions
-- Investigating autonomous parking / positioning behavior
-- Supporting future development of an autonomous aircraft tug platform
+- LiDAR-based mapping and localization
+- Autonomous navigation toward target positions
+- Robot and sensor integration using ROS
+- Autonomous positioning / parking behavior
+- Feasibility of a future custom autonomous aircraft tug platform
 
 ## Experimental Setup
 
-Experiments were conducted indoors using a mobile robot as the prototype
-platform. A small-scale aircraft setup was attached to the robot to represent
-the aircraft-parking application.
-
-The hardware environment included:
-
+**Hardware**
 - TurtleBot2 / Kobuki mobile base
 - RPLIDAR
 - NVIDIA Jetson TX2
-- Laptop for development and visualization
-- Kinect sensor available on the TurtleBot2 platform
+- Development laptop
+- Kinect sensor available on the TurtleBot platform
 
-LiDAR was used as the primary sensor for mapping and navigation experiments.
-
-## Software and Robotics Stack
-
-The project involved:
-
+**Software / Robotics**
 - ROS
 - Gazebo
 - RViz
-- URDF robot modeling
-- SLAM
-- TurtleBot packages
-- Kobuki base integration
-- Navigation and pose-based motion
-- SSH and remote visualization
-- ROS network configuration
+- URDF
+- SLAM / GMapping
+- TurtleBot & Kobuki packages
+- ROS Navigation
+- SSH and ROS networking
 
-## Development Approach
+LiDAR was used as the primary sensor for mapping and navigation experiments.
 
-The project initially focused on simulation and ROS system integration before
-testing the approach with the physical prototype.
+## Development & Integration
 
-The work included adapting and configuring existing ROS/TurtleBot components
-for the experimental Kobuki, Jetson TX2, and RPLIDAR setup.
+The project began with simulation and ROS system integration before testing with
+the physical prototype.
 
-The development workflow included:
+The work included:
 
-1. Configuring and modifying the robot model
-2. Integrating LiDAR into the ROS environment
-3. Configuring and testing SLAM
-4. Generating an indoor occupancy map
-5. Visualizing the robot, coordinate frames, sensor information, and map in RViz
-6. Working with target poses and autonomous navigation
-7. Investigating autonomous positioning / parking behavior
+- Configuring and modifying the robot model
+- Integrating RPLIDAR with the ROS environment
+- Configuring and testing SLAM
+- Generating an indoor occupancy map
+- Working with ROS TF coordinate frames
+- Visualizing the robot, map, and sensor data in RViz
+- Working with target poses and autonomous navigation
+- Running ROS components across the Jetson TX2 and development laptop
+- Configuring SSH, ROS networking, and remote visualization
+- Investigating autonomous positioning / parking behavior
 
-## Mapping and SLAM
+## Recovered Results
 
-LiDAR-based SLAM approaches were investigated for mapping the indoor
-environment.
-
-Recovered project artifacts include a generated occupancy map with a resolution
-of 0.05 m/pixel.
-
-Recovered ROS TF data also shows the mapping/navigation transform chain,
-including frames such as:
+Recovered project artifacts include an indoor occupancy map generated at
+**0.05 m/pixel** and ROS TF diagrams showing the mapping/navigation frame structure:
 
 `map -> odom -> base_footprint -> base_link`
 
-along with wheel, IMU, and laser-related frames.
+The recovered workspace also contains evidence of GMapping-based SLAM,
+simulation, robot description/configuration, and navigation experimentation.
 
-The recovered workspace contains experiments involving GMapping as well as
-configuration related to other SLAM approaches investigated during development.
+Selected recovered outputs are preserved in this repository:
 
-## System Integration Challenges
+```text
+maps/
+├── mapfirst.pgm
+└── mapfirst.yaml
 
-A significant part of the project involved practical ROS and hardware
-integration, including:
-
-- Running ROS components across the Jetson TX2 and a development laptop
-- Remote visualization using SSH
-- ROS network configuration
-- Wireless communication between development machines
-- RPLIDAR integration
-- USB connectivity and bandwidth considerations
-- Modifying robot descriptions for the experimental hardware configuration
-- Working with ROS TF coordinate frames
-- Running RViz, SLAM, and navigation tools
-- Integrating existing TurtleBot/Kobuki ROS components into the prototype
-
-## Recovered Project Artifacts
-
-The original 2020 development workspace was only partially recovered.
-
-This repository preserves selected outputs from the experiments, including:
-
-- Generated occupancy map
-- ROS map configuration
-- TF frame diagrams
-- Documentation of the experimental architecture and development process
-
-Standard ROS, TurtleBot, and Kobuki packages used by the project are not
-republished here as original work.
-
-## Project Status
-
-This was an experimental R&D prototype rather than a production aircraft tug.
-
-The recovered artifacts confirm work on ROS integration, robot modeling,
-mapping/SLAM, TF configuration, simulation, and navigation experimentation.
-
-The broader project investigated autonomous aircraft positioning and parking
-using a small-scale aircraft setup attached to the mobile robot. Because the
-complete original workspace and documentation are no longer available, this
-repository does not claim that the complete autonomous aircraft-parking
-workflow reached its intended final implementation.
-
-## Attribution
-
-The project was built using existing open-source ROS, TurtleBot, Kobuki,
-Gazebo, SLAM, and navigation components.
-
-These underlying packages and drivers were not developed by me. This repository
-documents the project-level system integration, configuration, experimentation,
-and recovered outputs from the prototype.
+docs/
+└── ros_tf_tree.pdf
