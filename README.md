@@ -3,8 +3,8 @@
 This project explored a small-scale autonomous robotic tug concept for aircraft
 parking and positioning using a TurtleBot2 / Kobuki mobile platform.
 
-The work was carried out in 2020 as part of my role as an **Associate AI Engineer
-at NextBridge**, where I contributed to an autonomous robotics R&D effort involving
+The work was carried out in 2020 as part of my role as an Associate AI Engineer
+at NextBridge, where I contributed to an autonomous robotics R&D effort involving
 ROS, mobile robot integration, mapping, navigation, and experimentation toward an
 aircraft-tug use case.
 
